@@ -1,0 +1,13 @@
+# Response menu items definition
+entity.response_entity.collection:
+  title: 'Response list'
+  route_name: entity.response_entity.collection
+  description: 'List Response entities'
+  parent: system.admin_structure
+  weight: 100
+
+response_entity.admin.structure.settings:
+  title: 'Response settings'
+  description: 'Configure Response entities'
+  route_name: response_entity.settings
+  parent: system.admin_structure
