@@ -3,7 +3,7 @@
 namespace Drupal\doktor\Form;
 
 use Drupal\Core\Entity\ContentEntityDeleteForm;
-use \Drupal\Core\Url;
+use Drupal\Core\Url;
 
 /**
  * Provides a form for deleting Response entities.
@@ -18,9 +18,8 @@ class ResponseEntityDeleteForm extends ContentEntityDeleteForm {
    * @return string
    *   The form question. The page title will be set to this value.
    */
-  public function getQuestion()
-  {
-    return $this->t('Are you sure you want to delete %name?', array('%name' => $this->entity->label()));
+  public function getQuestion() {
+    return $this->t('Are you sure you want to delete %name?', ['%name' => $this->entity->label()]);
   }
 
   /**
@@ -29,8 +28,7 @@ class ResponseEntityDeleteForm extends ContentEntityDeleteForm {
    * @return \Drupal\Core\Url
    *   A URL object.
    */
-  public function getCancelUrl()
-  {
+  public function getCancelUrl() {
     return new Url('entity.response_entity.collection');
   }
 
@@ -42,4 +40,3 @@ class ResponseEntityDeleteForm extends ContentEntityDeleteForm {
   }
 
 }
-

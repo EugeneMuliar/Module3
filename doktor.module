@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Provides example functionality.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function doktor_theme($existing, $type, $theme, $path) {
+  return [
+    'create-response-page' => [
+      'render' => 'form',
+      'variables' => [
+        'form' => NULL,
+        'responses' => NULL,
+        'pager' => NULL,
+      ],
+    ],
+  ];
+}

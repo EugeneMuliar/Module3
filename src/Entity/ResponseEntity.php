@@ -168,6 +168,7 @@ class ResponseEntity extends ContentEntityBase implements ResponseEntityInterfac
    * {@inheritdoc}
    */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
+
     $fields = parent::baseFieldDefinitions($entity_type);
 
     // Add the published field.
@@ -210,6 +211,7 @@ class ResponseEntity extends ContentEntityBase implements ResponseEntityInterfac
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE)
+      ->addConstraint('Name')
       ->setRequired(TRUE);
 
     $fields['email'] = BaseFieldDefinition::create('email')
@@ -245,12 +247,12 @@ class ResponseEntity extends ContentEntityBase implements ResponseEntityInterfac
       ])
       ->setSettings([
         'pattern' => '^\+?\d{10,15}$',
-        'max_length' => 15,
+        'max_length' => 13,
       ])
       ->setPropertyConstraints(
         'value', [
           'Regex' => [
-            'pattern' => '/^\+?\d{10,15}$/',
+            'pattern' => '/[+]380[0-9]{9}/',
             'message' => t('Your number mobile is not valid. Please enter the valid tel number'),
           ],
         ]
@@ -259,12 +261,11 @@ class ResponseEntity extends ContentEntityBase implements ResponseEntityInterfac
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
-
     $fields['avatar'] = BaseFieldDefinition::create('image')
       ->setLabel(t('User avatar'))
-      ->setDefaultValue('modules/custom/reviews_book/icons/image-not-found.png')
+      ->setDefaultValue('modules/custom/doktor/images/image-not-found.png')
       ->setSettings([
-        'file_directory' => 'public://reviews_book/avatar',
+        'file_directory' => 'public://avatar',
         'alt_field_required' => FALSE,
         'file_extensions' => 'png jpg jpeg',
         'max_filesize' => 2 * 1024 * 1024,
@@ -281,13 +282,13 @@ class ResponseEntity extends ContentEntityBase implements ResponseEntityInterfac
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE)
-      ->setRequired(TRUE);
+      ->setRequired(FALSE);
 
     $fields['picture'] = BaseFieldDefinition::create('image')
       ->setLabel(t('Response picture'))
       ->setDescription(t('Review picture for review.'))
       ->setSettings([
-        'file_directory' => 'public://reviews_book/picture',
+        'file_directory' => 'public://picture',
         'alt_field_required' => FALSE,
         'file_extensions' => 'png jpg jpeg',
         'max_filesize' => 5 * 1024 * 1024,
@@ -339,6 +340,8 @@ class ResponseEntity extends ContentEntityBase implements ResponseEntityInterfac
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
       ->setDescription(t('The time that the entity was last edited.'));
+
+
 
     return $fields;
   }

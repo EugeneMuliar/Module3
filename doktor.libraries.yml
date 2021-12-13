@@ -1,0 +1,4 @@
+responses_css:
+  css:
+    theme:
+      css/style.css: {}

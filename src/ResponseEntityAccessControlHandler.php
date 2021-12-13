@@ -28,7 +28,6 @@ class ResponseEntityAccessControlHandler extends EntityAccessControlHandler {
           return AccessResult::allowedIfHasPermission($account, 'view unpublished response entities');
         }
 
-
         return AccessResult::allowedIfHasPermission($account, 'view published response entities');
 
       case 'update':
@@ -50,6 +49,5 @@ class ResponseEntityAccessControlHandler extends EntityAccessControlHandler {
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
     return AccessResult::allowedIfHasPermission($account, 'add response entities');
   }
-
 
 }

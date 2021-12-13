@@ -1,7 +1,7 @@
-guestbook.content:
+doktor.content:
   path: '/doktor/page'
   defaults:
     _controller: 'Drupal\doktor\Controller\DoktorController::content'
-    _title: 'Add your response'
+    _title: 'Add your response!'
   requirements:
     _permission: 'access content'

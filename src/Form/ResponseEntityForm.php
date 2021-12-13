@@ -34,7 +34,7 @@ class ResponseEntityForm extends ContentEntityForm {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    /* @var \Drupal\doktor\Entity\ResponseEntity $entity */
+    /** @var \Drupal\doktor\Entity\ResponseEntity $entity */
     $form = parent::buildForm($form, $form_state);
 
     return $form;
@@ -60,7 +60,7 @@ class ResponseEntityForm extends ContentEntityForm {
           '%label' => $entity->label(),
         ]));
     }
-    $form_state->setRedirect('entity.response_entity.canonical', ['response_entity' => $entity->id()]);
+    $form_state->setRedirect('doktor.content');
   }
 
 }

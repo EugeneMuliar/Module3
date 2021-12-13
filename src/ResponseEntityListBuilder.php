@@ -26,7 +26,7 @@ class ResponseEntityListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var \Drupal\doktor\Entity\ResponseEntity $entity */
+    /** @var \Drupal\doktor\Entity\ResponseEntity $entity */
     $row['id'] = $entity->id();
     $row['name'] = Link::createFromRoute(
       $entity->label(),
