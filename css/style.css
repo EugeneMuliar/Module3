@@ -17,7 +17,7 @@
 .responses .response {
   max-width: 1000px;
   width: auto;
-  background-color: #ECE9E9;
+  background-color: #ece9e9;
   padding: 25px 15px;
   border-radius: 10px;
 }
@@ -89,7 +89,7 @@
   color: #ffffff;
 }
 .pager-nav .pagination .pager__item a, .pager-nav .pagination .is-active a {
-  background-color: #ADADAD;
+  background-color: #adadad;
 }
 .pager-nav .pagination .pager__item a:hover, .pager-nav .pagination .is-active a:hover {
   background-color: #9b9b9b;

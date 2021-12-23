@@ -4,7 +4,7 @@ namespace Drupal\doktor\Controller;
 
 /**
  * @file
- * Provides database creating functionality.
+ * Provides controller functionality.
  */
 
 use Drupal\Core\Controller\ControllerBase;
@@ -15,14 +15,23 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Provides content.
  */
 class DoktorController extends ControllerBase {
-
   /**
-   * @var
+   * For dependency injection.
+   *
+   * @var \Drupal\Core\Entity\EntityManagerInterface
    */
   protected $entityManager;
 
+  /**
+   * For dependency injection.
+   *
+   * @var \Drupal\Core\Form\FormBuilder
+   */
   protected $formBuilder;
 
+  /**
+   * {@inheritdoc}
+   */
   public static function create(ContainerInterface $container) {
     $instance = parent::create($container);
     $instance->entityManager = $container->get('entity_type.manager');
@@ -44,7 +53,8 @@ class DoktorController extends ControllerBase {
 
     $form = $this->formBuilder->getForm($entity, 'add');
 
-    $response_entity = $this->entityTypeManager()->getStorage('response_entity');
+    $response_entity = $this->entityTypeManager()
+      ->getStorage('response_entity');
     $query = $response_entity->getQuery();
     $ids = $query->condition('status', 1)
       ->sort('created', 'DESC')
@@ -54,8 +64,8 @@ class DoktorController extends ControllerBase {
     $responses = $response_entity->loadMultiple($ids);
 
     $data = [];
-    foreach ($responses as $key => $response){
-      if(!$response->getAvatar()["target_id"] == NULL) {
+    foreach ($responses as $key => $response) {
+      if (!$response->getAvatar()["target_id"] == NULL) {
         $file_avatar = File::load($response->getAvatar()["target_id"]);
         $avatar_uri = $file_avatar->getFileUri();
         $avatar_is_set = TRUE;
@@ -65,7 +75,7 @@ class DoktorController extends ControllerBase {
         $avatar_is_set = FALSE;
       }
 
-      if(!$response->getPicture()["target_id"] == NULL) {
+      if (!$response->getPicture()["target_id"] == NULL) {
         $file_picture = File::load($response->getPicture()["target_id"]);
         $picture_uri = $file_picture->getFileUri();
         $picture_is_set = TRUE;
@@ -96,14 +106,11 @@ class DoktorController extends ControllerBase {
         '#title' => 'picture',
 
         '#isset' => $picture_is_set,
-      ];;
+      ];
       $data[$key]['text_response'] = $response->getText();
       $data[$key]['created'] = $response->getCreatedTime();
-//      var_dump($response->getAvatar()["target_id"]);
-//      die();
     }
-//    var_dump($data);
-//    die();
+
     $pager = [
       '#type' => 'pager',
     ];

@@ -16,7 +16,7 @@
   .response {
     max-width: 1000px;
     width: auto;
-    background-color: #ECE9E9;
+    background-color: #ece9e9;
     padding: 25px 15px;
     border-radius: 10px;
     .personal-data {
@@ -83,25 +83,21 @@
     }
   }
 }
-.pager-nav{
-  .pagination {
-    .pager__item {
-      a {
-        border-width: 0;
-        background-color: #ffffff;
-        border-radius: 15px;
-        margin: 5px;
-        color: #ffffff;
-      }
+.pager-nav .pagination {
+  .pager__item a {
+    border-width: 0;
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin: 5px;
+    color: #ffffff;
+  }
+
+  .pager__item, .is-active {
+    a {
+      background-color: #adadad;
     }
-    .pager__item, .is-active {
-      a {
-        background-color: #ADADAD;
-      }
-      a:hover{
-        background-color: #9b9b9b;
-      }
+    a:hover{
+      background-color: #9b9b9b;
     }
   }
 }
-

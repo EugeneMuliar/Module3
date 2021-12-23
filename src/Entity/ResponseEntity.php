@@ -341,8 +341,6 @@ class ResponseEntity extends ContentEntityBase implements ResponseEntityInterfac
       ->setLabel(t('Changed'))
       ->setDescription(t('The time that the entity was last edited.'));
 
-
-
     return $fields;
   }
 

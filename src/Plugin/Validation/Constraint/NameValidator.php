@@ -20,4 +20,5 @@ class NameValidator extends ConstraintValidator {
       }
     }
   }
+
 }
